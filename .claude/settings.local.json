@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -o \"from langgraph\\\\|from langchain\\\\|import langgraph\\\\|import langchain\\\\|from pydantic\\\\|import asyncio\\\\|from crewai\" /f/workspace/agent/GenAI_Agents/all_agents_tutorials/*.ipynb)",
+      "Bash(ls -lh /f/workspace/agent/GenAI_Agents/all_agents_tutorials/*.ipynb)",
+      "Bash(find . -name .env* -o -name *.env)",
+      "Bash(venv/Scripts/python -c \"from pydantic_ai.providers.openai import OpenAIProvider; help\\(OpenAIProvider.__init__\\)\")",
+      "Bash(venv/Scripts/python -c \"from pydantic_ai.agent import AgentRunResult; print\\([a for a in dir\\(AgentRunResult\\) if not a.startswith\\(''_''\\)]\\)\")",
+      "Bash(venv/Scripts/python -c \"from pydantic_ai.agent import AgentRunResult; r = AgentRunResult.__doc__; print\\(r\\)\")",
+      "Bash(venv/Scripts/python -c \":*)",
+      "Bash(xargs grep:*)",
+      "Bash(python -c \":*)",
+      "Bash(for dir:*)",
+      "Bash(do cp:*)",
+      "Bash(echo \"已同步到 md/$dir/\")",
+      "Bash(done)",
+      "Bash(pip install:*)",
+      "Bash(python -c \"import langgraph; print\\(langgraph.__version__\\)\")",
+      "Bash(./venv/Scripts/python -c \"import openai; print\\(openai.__version__\\)\")",
+      "Bash(./venv/Scripts/python -c \":*)",
+      "Bash(F:/workspace/agent/GenAI_Agents/md/01/venv/Scripts/python -c \":*)",
+      "Bash(python -c \"import openai; print\\(openai.__version__\\)\")",
+      "Bash(F:/workspace/agent/GenAI_Agents/md/01/venv/Scripts/python -c \"import openai; print\\(openai.__version__\\)\")",
+      "Bash(grep \"API_BASE_URL=https://free\" F:/workspace/agent/GenAI_Agents/md/*/. env)",
+      "Bash(grep \"API_BASE_URL=https://free\" F:/workspace/agent/GenAI_Agents/md/*/.env)",
+      "Bash(grep \"API_BASE_URL\" F:/workspace/agent/GenAI_Agents/md/*/.env)",
+      "Bash(do)",
+      "Bash(cp \"F:/workspace/agent/GenAI_Agents/md/01/.env\" \"F:/workspace/agent/GenAI_Agents/md/$dir/.env\")",
+      "Bash(echo \"已同步 md/$dir/\")"
+    ]
+  }
+}
