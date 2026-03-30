@@ -26,7 +26,9 @@
       "Bash(grep \"API_BASE_URL\" F:/workspace/agent/GenAI_Agents/md/*/.env)",
       "Bash(do)",
       "Bash(cp \"F:/workspace/agent/GenAI_Agents/md/01/.env\" \"F:/workspace/agent/GenAI_Agents/md/$dir/.env\")",
-      "Bash(echo \"已同步 md/$dir/\")"
+      "Bash(echo \"已同步 md/$dir/\")",
+      "Bash(mkdir -p \"F:/workspace/agent/GenAI_Agents/md/09\")",
+      "Bash(cp \"F:/workspace/agent/GenAI_Agents/md/01/.env\" \"F:/workspace/agent/GenAI_Agents/md/09/.env\")"
     ]
   }
 }
