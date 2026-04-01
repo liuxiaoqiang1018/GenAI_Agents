@@ -34,7 +34,9 @@
       "Bash(cp F:/workspace/agent/GenAI_Agents/md/01/.env F:/workspace/agent/GenAI_Agents/md/12/.env)",
       "Bash(ls F:/workspace/agent/GenAI_Agents/data/project_manager_assistant*)",
       "Bash(mkdir -p F:/workspace/agent/GenAI_Agents/md/13)",
-      "Bash(cp F:/workspace/agent/GenAI_Agents/md/01/.env F:/workspace/agent/GenAI_Agents/md/13/.env)"
+      "Bash(cp F:/workspace/agent/GenAI_Agents/md/01/.env F:/workspace/agent/GenAI_Agents/md/13/.env)",
+      "Bash(mkdir -p F:/workspace/agent/GenAI_Agents/md/19)",
+      "Bash(cp F:/workspace/agent/GenAI_Agents/md/01/.env F:/workspace/agent/GenAI_Agents/md/19/.env)"
     ]
   }
 }
