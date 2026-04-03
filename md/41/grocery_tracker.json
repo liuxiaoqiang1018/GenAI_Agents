@@ -1,0 +1,12 @@
+{
+  "items": [
+    {"item_name":"鸡蛋","count":7,"unit":"个","expiration_date":"2026-04-24"},
+    {"item_name":"牛奶(伊利纯牛奶)","count":1,"unit":"盒(1L)","expiration_date":"2026-09-30"},
+    {"item_name":"西兰花","count":1,"unit":"颗(约500g)","expiration_date":"2026-04-08"},
+    {"item_name":"猪肉(里脊)","count":1,"unit":"份(500g)","expiration_date":"2026-04-06"},
+    {"item_name":"番茄","count":2,"unit":"个","expiration_date":"2026-04-10"},
+    {"item_name":"米饭(东北大米)","count":1,"unit":"袋(5kg)","expiration_date":"2026-09-30"},
+    {"item_name":"豆腐","count":2,"unit":"块","expiration_date":"2026-04-10"},
+    {"item_name":"青椒","count":3,"unit":"个","expiration_date":"2026-04-13"}
+  ]
+}

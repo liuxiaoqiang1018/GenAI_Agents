@@ -1,0 +1,1 @@
+{"timestamp": "2026-04-02 10:32:29", "city": "鍖椾含", "weather_data": {"weather": "中雨伴随阵风", "wind_speed": 15.2, "cloud_cover": 75, "sea_level": 1012, "temperature": 22.3, "humidity": 70, "pressure": 1005}, "disaster_type": "洪水", "severity": "Medium"}
