@@ -127,15 +127,21 @@ def main():
         print(f"  >>> 【{name}】完成: {result[:150]}...")
         return name, result
 
-    print(f"  使用线程池并行调用LLM，大幅缩短等待时间")
-    with ThreadPoolExecutor(max_workers=3) as executor:
-        futures = [executor.submit(write_one_section, name) for name in section_names]
-        for future in as_completed(futures):
-            try:
-                name, content = future.result()
-                sections[name] = content
-            except Exception as e:
-                print(f"  !! 章节写作失败: {e}")
+    print(f"  分批并行调用LLM（每批2个，避免API限流）")
+    batch_size = 2
+    for i in range(0, len(section_names), batch_size):
+        batch = section_names[i:i + batch_size]
+        print(f"\n  --- 第{i // batch_size + 1}批: {batch} ---")
+        with ThreadPoolExecutor(max_workers=batch_size) as executor:
+            futures = [executor.submit(write_one_section, name) for name in batch]
+            for future in as_completed(futures):
+                try:
+                    name, content = future.result()
+                    sections[name] = content
+                except Exception as e:
+                    print(f"  !! 章节写作失败: {e}")
+        if i + batch_size < len(section_names):
+            time.sleep(3)
 
     # ==============================================================
     # 步骤5：汇聚

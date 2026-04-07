@@ -133,29 +133,39 @@ def write_section(section_name: str, outline: str, analyses: str) -> str:
 
 
 def write_all_sections(outline: str, analyses: str) -> dict:
-    """步骤3：真正并行写6个章节"""
+    """步骤3：分批并行写6个章节（每批2个，避免API限流）"""
     print("\n" + "=" * 60)
-    print("【步骤3】并行撰写6个章节")
+    print("【步骤3】分批并行撰写6个章节（每批2个）")
     print("=" * 60)
-    print("  使用线程池并行调用LLM，大幅缩短等待时间")
+    print("  原教程: 6个节点并行执行，最后汇聚到 aggregate_paper")
+    print("  本课: 分3批，每批2个并行，避免公益站API限流")
 
     section_names = ["摘要", "引言", "方法", "结果", "结论", "参考文献"]
     sections = {}
+    batch_size = 2
 
-    with ThreadPoolExecutor(max_workers=6) as executor:
-        futures = {
-            executor.submit(write_section, name, outline, analyses): name
-            for name in section_names
-        }
-        for future in as_completed(futures):
-            name = futures[future]
-            try:
-                result = future.result()
-                sections[name] = result
-                print(f"  完成【{name}】（{len(result)}字）: {result[:100]}...")
-            except Exception as e:
-                print(f"  【{name}】写作失败: {e}")
-                sections[name] = f"（{name}部分生成失败）"
+    for i in range(0, len(section_names), batch_size):
+        batch = section_names[i:i + batch_size]
+        print(f"\n  --- 第{i // batch_size + 1}批: {batch} ---")
+
+        with ThreadPoolExecutor(max_workers=batch_size) as executor:
+            futures = {
+                executor.submit(write_section, name, outline, analyses): name
+                for name in batch
+            }
+            for future in as_completed(futures):
+                name = futures[future]
+                try:
+                    result = future.result()
+                    sections[name] = result
+                    print(f"  完成【{name}】（{len(result)}字）: {result[:100]}...")
+                except Exception as e:
+                    print(f"  【{name}】写作失败: {e}")
+                    sections[name] = f"（{name}部分生成失败）"
+
+        # 批次间等待，避免限流
+        if i + batch_size < len(section_names):
+            time.sleep(3)
 
     return sections
 
